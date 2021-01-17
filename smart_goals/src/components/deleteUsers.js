@@ -72,7 +72,7 @@ function DeleteUsers(props){
                                   if(data.values[i].email===imageArray.values[j].email){
                                     prof=imageArray.values[j].image;
                                     prof=prof.substring(15,prof.length);
-                                    prof="http://localhost:3001/uploads/"+prof;
+                                    prof="https://smart-network.herokuapp.com/uploads/"+prof;
                                     userValues=[...userValues,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}];
                                     setUserValues1([...userValues1,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}]);
                                     setDemoArray(data.values);

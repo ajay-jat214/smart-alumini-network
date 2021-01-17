@@ -112,7 +112,7 @@ function HomePage(props){
               for(let j=0;j<data1.values.length;j++){
                   prof=data1.values[j].image;
                   prof=prof.substring(15,prof.length);
-                  prof="http://localhost:3001/uploads/"+prof;
+                  prof="https://smart-network.herokuapp.com/uploads/"+prof;
                   imageArray=[...imageArray,{email:data1.values[j].email,photo:prof}]
               }
             })

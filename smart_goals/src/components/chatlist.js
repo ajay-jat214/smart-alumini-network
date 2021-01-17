@@ -78,7 +78,7 @@ function ChatList(props){
                                   if(data.values[i].email===imageArray.values[j].email){
                                     prof=imageArray.values[j].image;
                                     prof=prof.substring(15,prof.length);
-                                    prof="http://localhost:3001/uploads/"+prof;
+                                    prof="https://smart-network.herokuapp.com/uploads/"+prof;
                                     setUserValues([...userValues,{email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}]);
                                     if(data.values[i].email!==props.emailCredentials)
                                       if(!userValues1.includes({email:data.values[i].email}))
