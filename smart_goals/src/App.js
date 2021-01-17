@@ -35,7 +35,7 @@ class App extends Component {
 
     logout = async() => {
         let r;
-        fetch('https://git.heroku.com/smart-network/logout', {
+        fetch('https://smart-network.herokuapp.com/logout', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({})
