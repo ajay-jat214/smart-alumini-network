@@ -14,6 +14,7 @@ import { searchAlumini } from './components/redux/reducer';
 import { searchFiltered } from './components/redux/reducer';
 import { setFilteredSearch } from './components/redux/actions';
 import {Button} from '@material-ui/core';
+import Particles from 'react-particles-js';
 import {Card} from '@material-ui/core';
 import Admin from './admin';
 
@@ -95,6 +96,40 @@ class App extends Component {
 
                     <
                     div className = 'bgds' >
+                   <Particles className='particles'
+                     params={
+                              {
+                            particles: {
+                                  number:{
+                                  value:250,
+                                  density:{
+                                  enable:true,
+                                  value_area:800
+                                }
+                                }
+                              }
+                             ,
+                            repulse: {
+                            distance: 200,
+                            duration: 0.4
+                            },
+                   
+                            onhover: {
+                            enable: true,
+                            mode:' repulse'
+                            },
+                              interactivity: {
+                            events: {
+                            onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                              }
+                            }
+                          }
+                       }
+                     }
+                          
+                    />
                     <
                     Signin onEmailChange = { this.onEmailChange }
                     onStateChange = { this.onStateChange }
