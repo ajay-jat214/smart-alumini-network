@@ -35,9 +35,7 @@ width:400px;
     margin:5px;
 }
 
-.messaging{
-    scrollbar-width:none;
-}
+
 
 .scrollll{
 transform: rotate(180deg);
@@ -151,7 +149,6 @@ transform: rotate(180deg);
     }
     .notifications{
         position: relative;
-        left: -60px;
         top:-5px;
     }
 }
@@ -260,11 +257,11 @@ transform: rotate(180deg);
     }
     .hehe{
         position:relative;
-        left:-33px;
+        left:-20px;
     }
 }
 
-@media only screen and (max-width: 340px){
+@media only screen and (max-width: 345px){
 
     .hehe{
         width:290px;
