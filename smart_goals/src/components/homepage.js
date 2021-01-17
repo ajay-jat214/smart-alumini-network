@@ -64,9 +64,9 @@ function HomePage(props){
  const [value,setValue]=useState([]);
  const [mess ,setMess]=useState([]);
  const [sessionMessages ,setSessionMessages]=useState([]);
- const ENDPOINT='localhost:3001';
+ const ENDPOINT='https://smart-network.herokuapp.com/';
  const scrollToBottom = useScrollToBottom();
- 
+
 
  useEffect(()=>{
    socket=io(ENDPOINT)
