@@ -202,6 +202,8 @@ transform: rotate(180deg);
 
 .sccroll{
     overflow-x: scroll;
+    overflow-y: none;
+    overflow-y: hidden;
     min-height: 300px;
 }
 
