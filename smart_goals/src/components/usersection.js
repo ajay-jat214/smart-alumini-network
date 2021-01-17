@@ -90,7 +90,7 @@ console.log(profile);
       <label htmlFor="profileImage">{
           profile.length
           ?
-          <img src={"https://smart-network.herokuapp.com/"+profile} alt="dummy" height='70' width='70' className='br-100 ' />
+          <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="dummy" height='70' width='70' className='br-100 ' />
           :
            <AccountCircleIcon style={{height:"50px",width:"50px"}}/>
       }</label>
