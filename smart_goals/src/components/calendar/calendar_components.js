@@ -124,7 +124,7 @@ constructor(){
         backgroundColor:color,
       })
 
-    fetch('http://localhost:3001/fetchCalendar',{
+    fetch(' https://smart-network.herokuapp.com/fetchCalendar',{
       method:'post',
       headers: { Authentication: 'Content-Type:application/json' },
       body:JSON.stringify({
@@ -153,7 +153,7 @@ constructor(){
    if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}' if yes enter anything else leave blank`)) {
             clickInfo.event.remove();
            
-            fetch('http://localhost:3001/delete',{
+            fetch(' https://smart-network.herokuapp.com/delete',{
                 method: "post",
                 headers: {"Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -181,7 +181,7 @@ constructor(){
       let end1 = event.event.end;
       let title1 = event.event.title;
       let color = event.event.backgroundColor;
-      return fetch('http://localhost:3001/update',{
+      return fetch(' https://smart-network.herokuapp.com/update',{
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -217,7 +217,7 @@ constructor(){
           let end1 = events[i].endStr;
           let title1 = events[i].title;
           let color = events[i].backgroundColor;
-          fetch('http://localhost:3001/update',{
+          fetch(' https://smart-network.herokuapp.com/update',{
               method: "post",
               headers: {
                 "Content-Type": "application/json",
