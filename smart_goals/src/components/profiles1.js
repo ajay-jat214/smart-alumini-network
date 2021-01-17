@@ -50,7 +50,7 @@ export default function Profiles1({currentPost}){
 
   const fun = () => {
     console.log(email);
-     fetch('https://git.heroku.com/smart-network/deleteUser', {
+     fetch('https://smart-network.herokuapp.com/deleteUser', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({

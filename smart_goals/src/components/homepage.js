@@ -84,7 +84,7 @@ function HomePage(props){
  },[ENDPOINT,props]);
 
   useEffect(()=>{
-     fetch('https://git.heroku.com/smart-network/messaging', {
+     fetch('https://smart-network.herokuapp.com/messaging', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({
@@ -102,7 +102,7 @@ function HomePage(props){
   },[ENDPOINT,props,props.email]);
 
   useEffect(()=>{
-      fetch('https://git.heroku.com/smart-network/getImage', {
+      fetch('https://smart-network.herokuapp.com/getImage', {
                 method: 'get',
                 headers: { Authentication: 'Content-Type:multipart/form-data' },
             })
@@ -147,7 +147,7 @@ function HomePage(props){
 
   const specialFunction1=(emailCredentials,email,message)=>{
       
-     fetch('https://git.heroku.com/smart-network/messaging', {
+     fetch('https://smart-network.herokuapp.com/messaging', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({

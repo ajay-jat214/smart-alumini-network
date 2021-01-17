@@ -30,7 +30,7 @@ class Messaging extends React.Component{
     this.setState({email:this.props.email});
   }
 	call=()=>{
-     fetch('https://git.heroku.com/smart-network/messaging', {
+     fetch('https://smart-network.herokuapp.com/messaging', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({

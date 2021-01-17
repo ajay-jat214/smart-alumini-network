@@ -17,7 +17,7 @@ function Admin(props){
   const onButtonSubmit=(event)=>{
     event.preventDefault();
    
-    fetch('https://git.heroku.com/smart-network/admin',{
+    fetch('https://smart-network.herokuapp.com/admin',{
       method:'post',
       headers: { Authentication: 'Content-Type:application/json' },
       body:JSON.stringify({

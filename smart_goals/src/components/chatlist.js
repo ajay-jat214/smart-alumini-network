@@ -31,7 +31,7 @@ function ChatList(props){
           for(let i=0;i<chat.length;i++)
             chat.pop();
 
-          fetch('https://git.heroku.com/smart-network/getImage', {
+          fetch('https://smart-network.herokuapp.com/getImage', {
                         method: 'get',
                         headers: { Authentication: 'Content-Type:multipart/form-data' },
                     })
@@ -40,7 +40,7 @@ function ChatList(props){
                       imageArray=data1;
                     })
                     .catch(err=>console.log(err));
-            fetch('https://git.heroku.com/smart-network/fetchUsers', {
+            fetch('https://smart-network.herokuapp.com/fetchUsers', {
                   method: 'get',
                   headers: { Authentication: 'Content-Type:application/json' },
               })
@@ -51,7 +51,7 @@ function ChatList(props){
 
                             for(let i=0;i<data.values.length;i++)
                              if(props.emailCredentials!==data.values[i].email)
-                              fetch('http://git.heroku.com/smart-network/fetchStamp/',{
+                              fetch('https://smart-network.herokuapp.com/fetchStamp/',{
                                 method:'post',
                                 headers: {Authentication:'Content-Type:application/json'},
                                 body: JSON.stringify({

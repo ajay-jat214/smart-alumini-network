@@ -36,7 +36,7 @@ class Schedule extends React.Component{
     }
  }
   componentDidMount = () => {
-    fetch('https://git.heroku.com/smart-network/fetchEvents',{
+    fetch('https://smart-network.herokuapp.com/fetchEvents',{
       method:'post',
       headers: { Authentication: 'Content-Type:application/json' },
       body:JSON.stringify({
@@ -78,7 +78,7 @@ class Schedule extends React.Component{
 
 call_back=async ()=>{
    
-    await fetch('https://git.heroku.com/smart-network/fetchEvents',{
+    await fetch('https://smart-network.herokuapp.com/fetchEvents',{
       method:'post',
       headers: { Authentication: 'Content-Type:application/json' },
       body:JSON.stringify({

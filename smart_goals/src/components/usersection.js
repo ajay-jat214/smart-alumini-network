@@ -41,7 +41,7 @@ function UserSection(props){
 
 
   React.useEffect(()=>{
-  fetch('https://git.heroku.com/smart-network/getImage', {
+  fetch('https://smart-network.herokuapp.com/getImage', {
                 method: 'get',
                 headers: { Authentication: 'Content-Type:multipart/form-data' },
             })
@@ -66,7 +66,7 @@ function UserSection(props){
     formData.append("profileImage", image.raw);
     formData.append("email",props.email);
     
-        axios.post("https://git.heroku.com/smart-network/uploadImage",formData,{
+        axios.post("https://smart-network.herokuapp.com/uploadImage",formData,{
             headers: { Authentication: 'Content-Type:multipart/form-data' },
         }).then(res=>{
             

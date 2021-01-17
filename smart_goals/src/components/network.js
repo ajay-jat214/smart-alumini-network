@@ -47,7 +47,7 @@ function Network(props){
 	useEffect(()=>{
           userValues=[];
           setUserValues1([]);
-          fetch('https://git.heroku.com/smart-network/getImage', {
+          fetch('https://smart-network.herokuapp.com/getImage', {
                         method: 'get',
                         headers: { Authentication: 'Content-Type:multipart/form-data' },
                     })
@@ -56,7 +56,7 @@ function Network(props){
                       imageArray=data1;
                     })
                     .catch(err=>console.log(err));
-            fetch('https://git.heroku.com/smart-network/fetchUsers', {
+            fetch('https://smart-network.herokuapp.com/fetchUsers', {
                   method: 'get',
                   headers: { Authentication: 'Content-Type:application/json' },
               })
