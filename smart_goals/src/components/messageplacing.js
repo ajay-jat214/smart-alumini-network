@@ -30,7 +30,7 @@ class MessagePlacing extends React.Component{
        <div>{
         this.props.emailCredentials===this.props.value.emailCredentials
         ?
-          <div className="white right bg-green">{this.props.value.message}</div>
+          <div className="white right bg-black">{this.props.value.message}</div>
         :
           <div className="left">{this.props.value.message}</div>    
        }</div>
