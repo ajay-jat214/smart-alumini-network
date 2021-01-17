@@ -12,6 +12,7 @@ import Pagination from './pagination';
 import {withRouter} from 'react-router-dom';
 import {setFilteredSearch} from './redux/actions';
 import Typewriter from 'typewriter-effect';
+import './usersection.css';
 let userValues=[];
 let length=0;
 let imageArray=[];
@@ -118,7 +119,7 @@ function Network(props){
 	     </div>
 	     <div className="relative pt4 dib">
 	     <input 
-	     className=" tc w-100 ba b--black-20 h2  input-reset " 
+	     className=" tc w-100 ba b--black-20 h2  input-reset newStyle" 
 	     placeholder="search alumini" 
 	     onChange={(event)=>search1(event)} 
 	     />

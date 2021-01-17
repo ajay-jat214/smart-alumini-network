@@ -51,8 +51,8 @@ function UserSection(props){
                   if(data.values[i].email===props.email){
                     prof=data.values[i].image;
                     prof=prof.substring(15,prof.length);
+                    prof="https://smart-network.herokuapp.com/uploads/"+prof;
                      setProfile(prof);
-                     
                   }
                  }
             })
@@ -85,12 +85,12 @@ function UserSection(props){
 
 
  return(
-     <div className="tc pa2 ma2 tc tj center">
+     <div className="tc pa2 tc tj center maxy">
     <div className="tc tj center">
       <label htmlFor="profileImage">{
           profile.length
           ?
-          <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="dummy" height='70' width='70' className='br-100 ' />
+          <img src={profile} alt="dummy" height='70' width='70' className='br-100 ' />
           :
            <AccountCircleIcon style={{height:"50px",width:"50px"}}/>
       }</label>

@@ -1,0 +1,11 @@
+.maxy{
+	margin:-.3rem;
+}
+
+@media only screen and (max-width: 590px){
+
+.newStyle{
+	width:120%;
+}
+
+}
