@@ -22,6 +22,10 @@
 	box-shadow:0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
 }
 
+.sccroll{
+    box-shadow:0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+}
+
 .eventSection{
     padding:4px;
     position:relative;
@@ -51,7 +55,7 @@
 
 
     .demo-app-sidebar{
-        max-width:300px;
+        max-width:70%;
     	
     }
 }
@@ -228,7 +232,7 @@
     }
 
     .demo-app-sidebar{
-        max-width:100%;
+        max-width:80%;
     }
     .demo-app{
         height:1650px;
