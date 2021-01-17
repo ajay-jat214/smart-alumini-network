@@ -92,7 +92,7 @@ class App extends Component {
                 <
                 /div>  :
                 (
-                   <div>
+                   <div class="particles">
                    <Particles className='particles'
                      params={
                               {
