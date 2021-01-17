@@ -557,7 +557,7 @@ io.on('connection', (socket) => {
  })
 
 if(process.env.NODE_ENV=="production"){
-  app.use(expres.static('smart_goals/build'))
+  app.use(express.static('smart_goals/build'))
   const path = require('path')
   app.get('*',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'smart_goals','build','index.html'))
