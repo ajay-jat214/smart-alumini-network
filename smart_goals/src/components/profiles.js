@@ -47,7 +47,7 @@ export default function Profiles({currentPost}){
   const handleClose = () => {
     setOpen(false);
   };
-
+  console.log('currentPost',currentPost);
 return(
 	<div className="center tc" >
     <div>
