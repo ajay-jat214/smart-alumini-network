@@ -92,10 +92,7 @@ class App extends Component {
                 <
                 /div>  :
                 (
-
-
-                    <
-                    div className = 'bgds' >
+                   <div>
                    <Particles className='particles'
                      params={
                               {
@@ -131,12 +128,14 @@ class App extends Component {
                           
                     />
                     <
+                    div className = 'bgds' >
+                    <
                     Signin onEmailChange = { this.onEmailChange }
                     onStateChange = { this.onStateChange }
                     rerender = { this.rerender }
                     />   <
                     /div>
-
+                    </div>
                 )
             )
         );
