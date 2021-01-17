@@ -85,7 +85,7 @@ function UserSection(props){
 
 
  return(
-     <div className="tc pa2 ma2 flex flex-wrap">
+     <div className="tc pa2 ma2 ">
     <div className="tc tj center">
       <label htmlFor="profileImage">{
           profile.length
