@@ -33,9 +33,9 @@ class Signin extends React.Component {
         this.props.rerender(this.state.data2);
     }
 
-    onButtonSubmit = (props) => {
+    onButtonSubmit =async (props) => {
         
-        fetch('https://smart-network.herokuapp.com/signin', {
+        await fetch('https://smart-network.herokuapp.com/signin', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({
