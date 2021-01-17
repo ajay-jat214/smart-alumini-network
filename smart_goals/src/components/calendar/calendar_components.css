@@ -66,7 +66,7 @@
     }
 
     .demo-app-sidebar{
-        max-width:100%;
+        max-width:80%;
     }
     .demo-app{
         height:1650px;
@@ -83,7 +83,7 @@
     }
 
     .demo-app-sidebar{
-        max-width:100%;
+        max-width:80%;
     }
     .demo-app{
     	height:1650px;
@@ -93,7 +93,7 @@
 @media only screen and (max-width:700px){
 
     .demo-app{
-    	height:1300px;
+    	height:1500px;
     }
 
 }
@@ -119,7 +119,7 @@
 
     .events{
         width:100%;
-        height:1300px;
+        height:1500px;
     }
 
 }
@@ -129,7 +129,7 @@
 
     .events{
         width:100%;
-        height:1300px;
+        height:1500px;
     }
 
 }
@@ -147,7 +147,8 @@
 }
 
 /*5ee311da29bbf86db4a3bdb6*/
-/*eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMTk1YjgzZDc0YTE1MWZmY2VhNmJjOCIsImlhdCI6MTU5ODE5MjQ0OSwiZXhwIjoxNjAwNzg0NDQ5fQ.FoIRisO0qVhtInVOv4ATaAUrtm51m5jOsMxoVhzMDjc*/.demo-app{
+/*eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMTk1YjgzZDc0YTE1MWZmY2VhNmJjOCIsImlhdCI6MTU5ODE5MjQ0OSwiZXhwIjoxNjAwNzg0NDQ5fQ.FoIRisO0qVhtInVOv4ATaAUrtm51m5jOsMxoVhzMDjc*/
+.demo-app{
     text-align:center;
     display:flex;
     flex-direction: row;
@@ -155,7 +156,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height:750px;
+    height:1500px;
 }
 
 .cardstyle{
@@ -237,7 +238,7 @@
 @media only screen and (max-width:700px){
 
     .demo-app{
-        height:1300px;
+        height:1500px;
     }
 
 }
@@ -263,7 +264,7 @@
 
     .events{
         width:100%;
-        height:1300px;
+        height:1500px;
     }
 
 }
@@ -273,7 +274,7 @@
 
     .events{
         width:100%;
-        height:1300px;
+        height:1500px;
     }
 
 }
