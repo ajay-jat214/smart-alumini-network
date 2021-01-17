@@ -53,6 +53,7 @@ function UserSection(props){
                     prof=prof.substring(15,prof.length);
                     prof="https://smart-network.herokuapp.com/uploads/"+prof;
                      setProfile(prof);
+                     console.log(prof,profile);
                   }
                  }
             })
@@ -81,7 +82,7 @@ function UserSection(props){
 
   };
  
-
+console.log(profile);
 
 
  return(
