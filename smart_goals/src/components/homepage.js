@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import Card from '@material-ui/core/Card';
+import {Card} from '@material-ui/core';
 import {connect} from 'react-redux';
 import {CHANGE_CHAT_SEARCH} from './redux/constants';
 import ChatList from './chatlist';

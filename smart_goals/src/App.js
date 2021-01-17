@@ -13,8 +13,8 @@ import { setAluminiSearch } from './components/redux/actions';
 import { searchAlumini } from './components/redux/reducer';
 import { searchFiltered } from './components/redux/reducer';
 import { setFilteredSearch } from './components/redux/actions';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
+import {Button} from '@material-ui/core';
+import {Card} from '@material-ui/core';
 import Admin from './admin';
 
 

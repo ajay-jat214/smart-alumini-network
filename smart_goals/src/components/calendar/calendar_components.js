@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {  INITIAL_EVENTS,createEventId } from './event-utils';
-import Card from '@material-ui/core/Card';
+import {Card} from '@material-ui/core';
 import './calendar_components.css';
 import {connect} from 'react-redux';
 let eventGuid = 0;

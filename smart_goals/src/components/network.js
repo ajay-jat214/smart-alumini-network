@@ -1,12 +1,12 @@
   import React,{useState,useEffect} from 'react';
 import values from './values';
-import Card from '@material-ui/core/card';
+import {Card} from '@material-ui/core';
 import Profiles from './profiles';
 import {setAluminiSearch} from './redux/actions'; 
 import {connect } from 'react-redux';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import {IconButton} from '@material-ui/core';
+import {InputAdornment} from '@material-ui/core';
 import {CHANGE_ALUMINI_SEARCH} from './redux/constants';
 import Pagination from './pagination';
 import {withRouter} from 'react-router-dom';

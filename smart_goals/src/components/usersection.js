@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from '@material-ui/core/Card';
+import {Card} from '@material-ui/core';
 import Schedule from './schedule';
 import {connect} from 'react-redux';
 import './usersection.css';

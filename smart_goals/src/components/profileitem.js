@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-import Card from '@material-ui/core/card';
-import Box from '@material-ui/core/Box';
+import {Card} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import { Avatar, Image } from 'antd';
 import { Modal, Button } from 'antd';
 import './profileitem.css';
