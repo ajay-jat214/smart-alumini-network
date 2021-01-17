@@ -109,7 +109,7 @@ function Network(props){
 	     <div className="courier f2 lh-copy nowrap hidden ellipsis flex inline tc tj center Typewriter-cursor" style={{color:'#F75990'}}>
 	     <Typewriter
 	     options={{
-	     	strings:['WELCOME TO THE ALUMINI SECTION'],
+	     	strings:['WELCOME'],
 	     	autoStart:true,
 	     	loop:true,
 	     	cursorClassName:'Typewriter_cursor fixed',

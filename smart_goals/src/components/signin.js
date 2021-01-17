@@ -88,7 +88,7 @@ class Signin extends React.Component {
             <legend className = "f4 fw6 ph0 mh0 black" > Sign In </legend> 
             <div className = "mt3" >
             <label className = "db fw6 lh-copy f6 black" htmlFor = "email-address" > Email </label> 
-            <input className = "glow:hover white pa2 input-reset ba bg-white hover-bg-black hover-white w-100"
+            <input className = "b pa2 input-reset ba bg-white hover-bg-black hover-white w-100"
             type = "email"
             name = "email-address"
             id = "email-address"
