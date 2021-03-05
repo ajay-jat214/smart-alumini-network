@@ -97,6 +97,7 @@ function ChatList(props){
                 }else {
                       alert(data)
                   }
+
               })  
 
     },[]);
@@ -128,8 +129,13 @@ function ChatList(props){
   for(let i=0;i<userValues1.length;i++)
     if(!chat.includes(userValues1[i]))
       chat.push(userValues1[i]);
+   chat=chat.filter(
+       (Values)=>{
+        return Values.firstName.toLowerCase().includes(props.chatSearch.toLowerCase());
+       }
+      )
  return(
-  <div  style={{ overflowY:'scroll',border: '5px solid black',height:'470px',display:'block'}} className="ghumao ">{
+  <div  style={{ overflowY:'scroll',border: '5px solid black',height:'444px'}} className="ghumao ">{
   	 chat.map((values,id)=><ChatItem values={chat} id={id} notificationLength={notificationLength}/>)
   }</div>
  );

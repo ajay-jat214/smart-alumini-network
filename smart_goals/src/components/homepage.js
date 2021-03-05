@@ -13,6 +13,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {messageSearch} from './redux/actions';
 import io from 'socket.io-client';
 import ScrollToBottom,{useScrollToBottom} from 'react-scroll-to-bottom';
+import Grid from '@material-ui/core/Grid';
 let dataArray=[];
 let socket;
 let prof='';
@@ -102,6 +103,7 @@ function HomePage(props){
   },[ENDPOINT,props,props.email]);
 
   useEffect(()=>{
+   
       fetch('https://smart-network.herokuapp.com/getImage', {
                 method: 'get',
                 headers: { Authentication: 'Content-Type:multipart/form-data' },
@@ -202,44 +204,60 @@ function HomePage(props){
     }
 
  return(
-  <div className="">
-   <div className="courier f2 lh-copy rok " style={{color:'#F75990'}}>
-   <Typewriter
-   options={{
-    strings:['CHAT'],
-    autoStart:true,
-    loop:true,
-   }}
-   />
-   </div>
-   <div className="messi">
-    <input
-    className="w5 h2 glow:hover input-reset ba b--white bg-black hover-bg-white hover-black mr3 messi white"
-    placeholder="search"
-    style={{width:'385px'}}
-    onChange={(event)=>setChatSearch(event.target.value)}
-    />
-    </div>
-    <div className=" flex flex-row mt4 hehe">
-    <div className="scroll side main4">
+  <div style={{marginTop:'30px'}}>
+       <div className="courier f2 lh-copy rok " style={{color:'#F75990'}}>
+       <Typewriter
+       options={{
+        strings:['CHAT'],
+        autoStart:true,
+        loop:true,
+       }}
+       />
+       </div>
+
+    <Grid container xl={12} lg={12} md={12} sm={12} xs={12} direction='column' > 
+
+     <div className="">
+     <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+      <input
+        className="h2 glow:hover input-reset ba b--white bg-black hover-bg-white hover-black  white"
+        placeholder="search"
+        style={{width:'100%'}}
+        onChange={(event)=>setChatSearch(event.target.value)}
+      />
+      </Grid>
+      </div>
+
+    <Grid item container xl={12} lg={12} md={12} sm={12} xs={12}>
+
+ 
+    <Grid item xl={3} lg={4} md={4} sm={6} xs={3}>
      <ChatList demo={demo} chatSearch={chatSearch} array={messageList} emailCredentials={props.emailCredentials} email={props.email}/>
-    </div>
-   <div className="w-100 okk">
-   <div className="w-100 pl2 pb2 headerr">
+    </Grid>
+
+
+
+   <Grid item container direction='column' xl={9} lg={8} md={8} sm={6} xs={9} >
+
+
+   <Grid item >
    {photo.length
    ?
-    <Card style={cardd} className="flex row">
+    <Card style={cardd} className="flex row w-100">
      <img src={photo} height="50px" width="50px" className="br-pill ml2"/>
-     <div className='white pl2 h-100-ns f3 measure-wide ml2 mt2'>{props.userName}</div>
+     <div className='white pl2 h-100-ns f3 measure-wide ml2 mt2'>{props.userName.charAt(0).toUpperCase()+props.userName.slice(1)}</div>
     </Card>
     :
     <Card style={cardd} className="white flex row">
      <AccountCircleIcon style={{height:"50px",width:"50px"}}/>
-     <div className='white pl2 h-100-ns f3 measure-wide ml2 mt2'>{props.userName}</div>
-    </Card>}
-   </div>
+     <div className='white pl2 h-100-ns f3 measure-wide ml2 mt2'>{props.userName.charAt(0).toUpperCase()+props.userName.slice(1)}</div>
+    </Card>
+   }
+   </Grid>
+
    
-   <div className="w-100 pl2 ajay pb2 h-75 scroll">
+
+   <div className="w-100 h-75 scroll">
     <Card style={{height:'100%'}}>
     {
     array.length
@@ -248,12 +266,13 @@ function HomePage(props){
        <div className="wall"><Messaging array={array}messages={messageList}  from={from} to={to}  emailCredentials={props.emailCredentials} email={props.email}/></div>
       </div>
     :
-      <div className="walls white b pl2 pt2">HEY WELCOME TO THE CHAT</div>
+      <div className="walls white b pl2 pt2">Hey, Welcome to the Chat!!</div>
     }
     </Card>
-
    </div>
-   <div className="w-100 pl2 ajay">
+
+
+   <div className="w-100 ajay">
     <Card style={carddd}>
      <input 
      placeholder="type message..." 
@@ -265,8 +284,11 @@ function HomePage(props){
      />
     </Card>
    </div>
-   </div>
-  </div>
+   </Grid>
+
+
+  </Grid>
+  </Grid>
   </div>
  	);
 }

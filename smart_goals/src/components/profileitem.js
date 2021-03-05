@@ -1,33 +1,76 @@
 import React,{useState} from 'react';
-import {Card} from '@material-ui/core';
 import {Box} from '@material-ui/core';
-import { Avatar, Image } from 'antd';
-import { Modal, Button } from 'antd';
-import './profileitem.css';
+import { Image } from 'antd';
+import { Modal } from 'antd';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import {CardHeader,Avatar,IconButton,CardMedia} from '@material-ui/core';
+import ShareIcon from '@material-ui/icons/Share';
 
-export default function ProfileItem({i,values,handleOpen,name}){
 
- var cardstyle = {
- 
-    width: '20vw',
-    transitionDuration: '0.3s',
-    height: '20vw',
-}	
+const useStyles=makeStyles((theme)=>({
+  imageHeight:{
+    objectFit:'cover',
+  },
+  FullHeight:{
+    height:"100%",
+    maxWidth:"320px",
+    margin:'auto',
+    minWidth:'250px',
+  }
+}))
 
+export default function ProfileItem({i,values,handleOpen,name,photo}){
+ const classes=useStyles();
+
+
+  
+  var a=name.slice(0,1).toUpperCase();
   return(
+    <Card className={classes.FullHeight}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" >
+            {a}
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <ShareIcon />
+          </IconButton>
+        }
+        title={name}
+        subheader={values.contact}
+      />
 
-  	<div className="relative pa3 tc tj center">
-    <Card style={cardstyle}>
-     <div>{
-      values.photo.length
+      {
+      photo.length
       ?
-        <Avatar src={values.photo} className="  h1 w2 grow  profile db h-80 w-auto br-100"  onClick={()=>{handleOpen(i);}}/>
+        <CardMedia
+          className={classes.imageHeight}
+          style={{height:'200px'}}
+          image={photo}
+          onClick={()=>{handleOpen(i);}}
+        />
       :
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className="  h5 w5 grow  profile db w-80 h-auto " onClick={()=>{handleOpen(i);}}/>
-     }</div>
-     <div>{name}</div>
-     </Card> 
-     </div>
+        <CardMedia
+          className={classes.imageHeight}
+          style={{height:'200px'}}
+          image="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          onClick={()=>{handleOpen(i);}}
+        />
+      }
+      <CardContent>
+        <Typography variant="body1" component="p">
+          {values.field}
+        </Typography>
+      </CardContent>
+
+    </Card>
   );
 }
 
@@ -72,3 +115,19 @@ export default function ProfileItem({i,values,handleOpen,name}){
           //             alert(data)
           //         }
           //     }) 
+
+
+
+
+   // <div className="relative pa3 tc tj center">
+   //  <Card style={cardstyle}>
+   //   <div>{
+   //    values.photo.length
+   //    ?
+   //      <Avatar src={values.photo} className="  h1 w2 grow  profile db h-80 w-auto br-100"  onClick={()=>{handleOpen(i);}}/>
+   //    :
+   //      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className="  h5 w5 grow  profile db w-80 h-auto " onClick={()=>{handleOpen(i);}}/>
+   //   }</div>
+   //   <div>{name}</div>
+   //   </Card> 
+   //   </div>

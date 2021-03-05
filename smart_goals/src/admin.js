@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {Button} from '@material-ui/core';
 import DeleteUsers from './components/deleteUsers';
+import {AppBar,Toolbar} from '@material-ui/core';
 
 function Admin(props){
   const [email,setEmail]=useState('');
@@ -47,27 +48,31 @@ function Admin(props){
  return(
   <form>
   <div className="flex wrap">
-  <Button variant="outlined" color="primary" style={{margin:'8px',position:'relative',top:'8px'}} onClick={props.logout}>
+  <AppBar>
+  <Toolbar>
+  <Button variant="outlined"  style={{margin:'8px',position:'relative',top:'8px',color:'white'}} onClick={props.logout}>
     LogOut
   </Button>
   <div>{
   show
   ?
-  <Button variant="outlined" color="primary" style={{margin:'8px',position:'relative',top:'8px'}} onClick={call}>
+  <Button variant="outlined"  style={{margin:'8px',position:'relative',top:'8px',color:'white'}} onClick={call}>
     Add Users
   </Button>
   :
-  <Button variant="outlined" color="secondary" style={{margin:'8px',position:'relative',top:'8px'}} onClick={call}>
+  <Button variant="outlined"  style={{margin:'8px',position:'relative',top:'8px',color:'white'}} onClick={call}>
     Delete Users
   </Button>
   }</div>
+  </Toolbar>
+  </AppBar>
   </div>
    <div>{
     show
     ?
     <DeleteUsers />
     :
-   <article className="vh-70 br2 ba dark-gray tc b--black-10 mv8 w-90 mt4 mw6 center shadow-5">
+   <article className="vh-70 br2 ba dark-gray tc b--black-10 mv8 w-90 mt4 mw6 center shadow-5 mt4">
     <main className="pa4 black-80">
     <div className="white measure center">
       <fieldset id="sign_up" className="ba b--transparent shadow5">

@@ -5,10 +5,9 @@ import {Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {Modal} from '@material-ui/core';
 import {Backdrop} from '@material-ui/core';
-import {Fade} from '@material-ui/core';
-import { Avatar, Image } from 'antd';
-import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {Fade,IconButton} from '@material-ui/core';
+import { Avatar, Image } from 'antd';
 let prof='';
 let profile=[];
 
@@ -17,16 +16,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    maxWidth: '250px',
+    margin: 'auto',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    
   },
 }));
 
-export default function Profiles1({currentPost}){
+export default function Profiles({currentPost}){
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [id,setId]=useState('');
@@ -35,26 +37,27 @@ export default function Profiles1({currentPost}){
   const [field,setField]=useState('');
   const [contact,setContact]=useState('');
   const [photo,setPhoto]=useState('');
-  const [email,setEmail]=useState('');
 
   const handleOpen = (id) => {
-  	setId(id);
-    setEmail(currentPost[id].email);
-  	setUserName(currentPost[id].userName);
-  	setName(currentPost[id].name)
-  	setField(currentPost[id].field);
-  	setContact(currentPost[id].contact);
+    setId(id);
+    setUserName(currentPost[id].userName);
+    setName(currentPost[id].name)
+    setField(currentPost[id].field);
+    setContact(currentPost[id].contact);
     setPhoto(currentPost[id].photo);
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const fun = () => {
-    console.log(email);
      fetch('https://smart-network.herokuapp.com/deleteUser', {
                 method: 'post',
                 headers: { Authentication: 'Content-Type:application/json' },
                 body: JSON.stringify({
-                    email:email,
+                    email:currentPost[id].email,
                     array:currentPost
                 })
             })
@@ -65,12 +68,21 @@ export default function Profiles1({currentPost}){
             .catch(err=>console.log(err));
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+
+
+  const funCall=(values,i)=>{
+    return(
+            <Grid item xs={12} sm={4}>
+            <ProfileItem i={i} key={i} values={values} handleOpen={handleOpen} name={currentPost[i].name} photo={currentPost[i].photo}/>
+            </Grid>
+      );
+      }
+
 
 return(
-	<div className="center tc" >
+  <div className="center tc" >
+    <div>
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -93,8 +105,9 @@ return(
         </IconButton>
         </div>
               <div>{
-
+              <IconButton>
               <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className=" pr2 h5 w5 grow  profile db" />
+              </IconButton>
               }</div>
 
             <p id="transition-modal-description">Name : {name}</p>
@@ -103,14 +116,16 @@ return(
           </div>
         </Fade>
       </Modal>
-   
-   <div className="mx-100 flex flex-wrap flex-center" >
-     {
-      currentPost.map((values,i)=> <ProfileItem i={i} key={i} values={values} handleOpen={handleOpen} name={currentPost[i].name}/> )
-     }
     </div>
+    <Grid container direction="row" >
+    <Grid item sm={0} xs={0}/>
+    <Grid item container spacing={3}>
+     {
+      currentPost.map((values,i)=> funCall(values,i) )
+     }
+    </Grid>
+    </Grid>
    </div>
   );
 }
-
 

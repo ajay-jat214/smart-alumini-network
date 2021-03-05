@@ -32,7 +32,7 @@ class MessagePlacing extends React.Component{
         ?
           <div className="white right bg-black">{this.props.value.message}</div>
         :
-          <div className="left">{this.props.value.message}</div>    
+          <div className="left ml2">{this.props.value.message}</div>    
        }</div>
 
      </div>

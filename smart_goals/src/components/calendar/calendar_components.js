@@ -4,9 +4,25 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {  INITIAL_EVENTS,createEventId } from './event-utils';
-import {Card} from '@material-ui/core';
 import './calendar_components.css';
 import {connect} from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import {Card,CardHeader,IconButton,Avatar,Typography,List,ListItem} from '@material-ui/core';
+import ShareIcon from '@material-ui/icons/Share';
+import { Table } from 'antd';
+
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Chinese Score',
+    dataIndex: 'chinese',
+  },
+
+];
 let eventGuid = 0;
 let todayStr = new Date().toISOString().replace(/T.*$/, ''); 
 
@@ -41,22 +57,38 @@ constructor(){
 
 
   render() {
+ 
    let value=this.props.show||this.props.EVENTS_LOAD.length!==0;
 
     return (
 
-      <div className='demo-app events flex flex-end'>
-       
-       <div className='demo-app-sidebar  card-box-shadow1 yoo' style={{marginTop:'40px',marginRight:'10px',width:'100%',backgroundColor:'white'}}>
-          <div className='demo-app-sidebar-section'>
-            <h2 className="">Todays Events </h2>
-            <ul>
+      <div className=' '>
+       <Grid container spacing={3} >
+        <Grid item sm={1} xs={0} md={2} lg={0}/>
+        <Grid item md={9} sm={10} xs={12} lg={2}>
+        <Card style={{height:'700px'}}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" >
+                T
+              </Avatar>
+            }
+            action={
+              <IconButton aria-label="settings">
+                <ShareIcon />
+              </IconButton>
+            }
+            title="Today's Event's"
+            style={{textAlign:'center',fontSize:'15px'}}
+            subheader="hey"
+            titleTypographyProps={{variant:'h5'}}
+          />
               {this.props.EVENTS_LOAD.map(this.renderSidebarEvent)}
-            </ul>
-          </div>
-        </div>
-
-    <div className="sccroll">
+        </Card>
+        </Grid>
+    
+    <div className="sccroll" style={{margin:'auto'}}>
+    <Grid item xs={12} sm={8} md={8}lg={8} xl={8}>
     <div className=' demo-app-main card-box-shadow1 calendar' style={{width:'800px',height:'656px',marginTop:'40px'}}>{
           value
           ?
@@ -88,8 +120,9 @@ constructor(){
             :
             null
     }</div>
+    </Grid>
    </div>
-
+   </Grid>
    </div>
 
 
@@ -260,13 +293,13 @@ constructor(){
 
   return (
 
-    <div key={event.id}>
-    <div>
+    <List key={event.id} style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+
       <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
-    </div>
-              <i>{"                                     " + event.title}</i>
-              <i>{"    " + options}</i>
-    </div>
+
+              <Typography>{"                                     " + event.title}</Typography>
+              <Typography>{"    " + options}</Typography>
+    </List>
 
   )
 }

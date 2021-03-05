@@ -8,6 +8,8 @@ const port = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
+const cloudinary=require('cloudinary');
+require('dotenv').config()
 cors = require('cors');
 app.use(cors());
 app.use(express.json());
@@ -19,10 +21,16 @@ var Chat = require('./chat');
 var User4 = require('./calendar');
 var Image = require('./uploadImage');
 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_ID,
+  api_secret: process.env.API_SECRET
+})
+
 let email;let name;
 //app.use('/static', express.static(path.join(__dirname, 'public')))
 //app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -92,12 +100,13 @@ app.post('/fetchStamp',(req,res)=>{
           });
     })
 })
-app.post('/uploadImage',upload.single("profileImage"),(req,res)=>{
+app.post('/uploadImage',upload.single("profileImage"),async(req,res)=>{
     let body='';
 
     var profilePic=req.valueOf().file.path;
     var email=req.body.email;
-
+    const result= await cloudinary.v2.uploader.upload(profilePic);
+ 
     Image.find({email:email},(err,preValue)=>{
 
         if(preValue.length>0)

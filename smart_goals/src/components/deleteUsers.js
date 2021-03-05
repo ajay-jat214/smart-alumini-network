@@ -109,7 +109,7 @@ function DeleteUsers(props){
 	}
 
 	 return(
-	     <div className="tc pb1 pt1 pr4 mr4 calisto">
+	     <div className="tc pb1 pt4 calisto">
 	     <div className="relative pt4 dib">
 	     <input 
 	     className=" tc w-100 ba b--black-20 h2  input-reset " 
@@ -130,9 +130,7 @@ function DeleteUsers(props){
 	     </div>
 
 	     <div className="">
-	     <Card  style={cardstyle} >
 	     <Profiles1 currentPost={currentPost} demoArray={demoArray}/>
-	     </Card>
 	     </div>
 		 <div>
 		  

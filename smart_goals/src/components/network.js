@@ -12,6 +12,7 @@ import Pagination from './pagination';
 import {withRouter} from 'react-router-dom';
 import {setFilteredSearch} from './redux/actions';
 import Typewriter from 'typewriter-effect';
+import Grid from '@material-ui/core/Grid';
 import './usersection.css';
 let userValues=[];
 let length=0;
@@ -46,6 +47,7 @@ function Network(props){
     const [demoArray,setDemoArray]=useState([]);
     const [userValues1,setUserValues1]=useState([]);
 	useEffect(()=>{
+		
           userValues=[];
           setUserValues1([]);
           fetch('https://smart-network.herokuapp.com/getImage', {
@@ -72,8 +74,8 @@ function Network(props){
                                     prof=imageArray.values[j].image;
                                     prof=prof.substring(15,prof.length);
                                     prof="https://smart-network.herokuapp.com/uploads/"+prof;
-                                    userValues=[...userValues,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}];
-                                    setUserValues1([...userValues1,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}]);
+                                    userValues=[...userValues,{name:data.values[i].firstName.charAt(0).toUpperCase()+data.values[i].firstName.slice(1)+" "+data.values[i].lastName.charAt(0).toUpperCase()+data.values[i].lastName.slice(1),email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}];
+                                    setUserValues1([...userValues1,{name:data.values[i].firstName.charAt(0).toUpperCase()+data.values[i].firstName.slice(1)+" "+data.values[i].lastName.charAt(0).toUpperCase()+data.values[i].lastName.slice(1),email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:prof}]);
                                     setDemoArray(data.values);
                                     break;
                                   }
@@ -81,8 +83,8 @@ function Network(props){
                                 
                                 if(j!==imageArray.values.length)
                                   continue;
-                                userValues=[...userValues,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:''}];
-                                setUserValues1([...userValues1,{name:data.values[i].firstName+" "+data.values[i].lastName,email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:''}]);
+                                userValues=[...userValues,{name:data.values[i].firstName.charAt(0).toUpperCase()+data.values[i].firstName.slice(1)+" "+data.values[i].lastName.charAt(0).toUpperCase()+data.values[i].lastName.slice(1),email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}];
+                                setUserValues1([...userValues1,{name:data.values[i].firstName.charAt(0).toUpperCase()+data.values[i].firstName.slice(1)+" "+data.values[i].lastName.charAt(0).toUpperCase()+data.values[i].lastName.slice(1),email:data.values[i].email,firstName:data.values[i].firstName,userName:data.values[i].userName,field:data.values[i].field,lastName:data.values[i].lastName,contact:data.values[i].phone,photo:"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"}]);
                                 setDemoArray(data.values);
                               }
                 }else {
@@ -103,16 +105,16 @@ function Network(props){
 	const search1=(event)=>{
 	 SetAluminiSearch(event.target.value);
 	}
-
+    
 	 return(
-	     <div className="tc pb1 pt1 pr4 mr4 calisto">
-	     <div className="courier f2 lh-copy nowrap hidden ellipsis flex inline tc tj center Typewriter-cursor" style={{color:'#F75990'}}>
+	     <div className="tc ">
+	     <div className="courier f2 lh-copy " style={{color:'#F75990'}}>
 	     <Typewriter
 	     options={{
 	     	strings:['WELCOME'],
 	     	autoStart:true,
 	     	loop:true,
-	     	cursorClassName:'Typewriter_cursor fixed',
+	     	cursorClassName:'Typewriter_cursor ',
 	     }}
 	     cursorClassName='Typewriter_cursor'
 	     />
@@ -136,14 +138,17 @@ function Network(props){
 	     </div>
 	     </div>
 
-	     <div className="">
-	     <Card  style={cardstyle} >
-	     <Profiles currentPost={currentPost} demoArray={demoArray}/>
-	     </Card>
-	     </div>
-		 <div>
-		  
-		 </div>
+
+    <Grid container direction="column">
+      <Grid item container style={{marginTop:'50px'}} >
+        <Grid item lg={2} md={1} xs={0}/>
+        <Grid item container xs={12} md={10} lg={8} spacing={2}>
+          <Profiles currentPost={currentPost} demoArray={demoArray}/>
+        </Grid>
+      </Grid>
+    </Grid>
+
+
 	     </div>
 	 	);
 }

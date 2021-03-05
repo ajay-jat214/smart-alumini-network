@@ -1,10 +1,15 @@
-import * as React from 'react';
+import React,{useState,useEffect} from 'react';
 import {Card} from '@material-ui/core';
 import Schedule from './schedule';
 import {connect} from 'react-redux';
 import './usersection.css';
 import ToDoList from './todolist/todolist';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Avatar } from 'antd';
+import { makeStyles } from '@material-ui/core/styles';
+import {Modal} from '@material-ui/core';
+import {Backdrop} from '@material-ui/core';
+import {Fade,Button,IconButton} from '@material-ui/core';
 const axios = require('axios');
 const mapStateToProps=(state)=>{
    const email=state.emailDetails.emailCredentials;
@@ -26,7 +31,27 @@ let prof='';
   }
 
 
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxWidth: '250px',
+    margin: 'auto',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    
+  },
+}));
+
+
 function UserSection(props){
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const [image, setImage] = React.useState({ preview: "", raw: "" });
   const [profile,setProfile]=React.useState('');
   const handleChange = e => {
@@ -41,6 +66,7 @@ function UserSection(props){
 
 
   React.useEffect(()=>{
+
   fetch('https://smart-network.herokuapp.com/getImage', {
                 method: 'get',
                 headers: { Authentication: 'Content-Type:multipart/form-data' },
@@ -52,7 +78,6 @@ function UserSection(props){
                     prof=data.values[i].image;
                     prof=prof.substring(15,prof.length);
                      setProfile(prof);
-                     console.log(prof,profile);
                   }
                  }
             })
@@ -69,7 +94,7 @@ function UserSection(props){
         axios.post("https://smart-network.herokuapp.com/uploadImage",formData,{
             headers: { Authentication: 'Content-Type:multipart/form-data' },
         }).then(res=>{
-            
+            console.log(res);
             prof=res.data.results.image;
             prof=prof.substring(15,prof.length);
              setProfile(prof);
@@ -81,41 +106,65 @@ function UserSection(props){
 
   };
  
-console.log(profile);
+  const handleOpen = (id) => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
 
  return(
-     <div className="tc pa2 tc tj center maxy">
-    <div className="tc tj center">
-      <label htmlFor="profileImage">{
-          profile.length
-          ?
-          <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="dummy" height='70' width='70' className='br-100 ' />
-          :
-           <AccountCircleIcon style={{height:"50px",width:"50px"}}/>
-      }</label>
-      <input
-        type="file"
-        id="profileImage"
-        style={{ display: "none" }}
-        onChange={handleChange}
-      />
-      <br />
-      <div>{
-      profile.length
-      ?
-      <button onClick={handleUpload}>Update</button>
-      :
-      <button onClick={handleUpload}>Upload</button>
+     <div className="">
 
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <label htmlFor="profileImage">{
+                profile.length
+                ?
+                <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="dummy" height='200' width='200' className='br-100 ' />
+                :
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className="  h5 w5 grow  profile db w-80 h-auto "  style={{height:"100px",width:"100px"}}/>
+            }</label>
+            <input
+              type="file"
+              id="profileImage"
+              style={{ display: "none" }}
+              onChange={handleChange}
+            />
+            <br/>
+          <Button onClick={handleUpload} style={{position:'relative',marginLeft:'50px'}}>Upload</Button>
+          </div>
+        </Fade>
+      </Modal>
+
+
+      <div className="mt6">{
+      <Button onClick={handleOpen}>UPLOAD</Button>
       }</div>
-    </div>
-    <Card>
+
+    
      <Schedule/>
-    </Card>
+    
      </div>
  	);
 
 }
 
 export default connect(mapStateToProps,null)(UserSection);
+
+
+
+      // <br />

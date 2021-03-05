@@ -15,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    maxWidth: '250px',
+    margin: 'auto',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    
   },
 }));
 
@@ -47,7 +50,17 @@ export default function Profiles({currentPost}){
   const handleClose = () => {
     setOpen(false);
   };
-  console.log('currentPost',currentPost);
+
+
+  const funCall=(values,i)=>{
+    return(
+            <Grid item xs={12} sm={4}>
+            <ProfileItem i={i} key={i} values={values} handleOpen={handleOpen} name={currentPost[i].name} photo={currentPost[i].photo}/>
+            </Grid>
+      );
+      }
+
+
 return(
 	<div className="center tc" >
     <div>
@@ -70,7 +83,7 @@ return(
               <div>{
               photo.length
               ?
-              <Avatar src={photo} className=" pr2 h-auto w-auto grow  profile db xs" />
+              <Avatar src={photo} className=" pr2 h-auto w-auto grow  profile db xs" style={{maxHeight:'350px'}}/>
               :
 	            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className=" pr2 h5 w5 grow  profile db" />
               }</div>
@@ -81,11 +94,14 @@ return(
         </Fade>
       </Modal>
     </div>
-   <div className="mx-100 flex flex-wrap flex-center" >
+    <Grid container direction="row" >
+    <Grid item sm={0} xs={0}/>
+    <Grid item container spacing={3}>
      {
-      currentPost.map((values,i)=> <ProfileItem i={i} key={i} values={values} handleOpen={handleOpen} name={currentPost[i].name}/> )
+      currentPost.map((values,i)=> funCall(values,i) )
      }
-    </div>
+    </Grid>
+    </Grid>
    </div>
   );
 }

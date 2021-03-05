@@ -111,7 +111,7 @@ transform: rotate(180deg);
     height:470px;
 }
 
-
+/*
 
 @media only screen and (max-width: 850px){
 
@@ -195,7 +195,7 @@ transform: rotate(180deg);
     .side{
         width:66px;
     }
-}
+}*/
 
 .sccroll{
     overflow-x: scroll;
@@ -204,7 +204,7 @@ transform: rotate(180deg);
     min-height: 300px;
 }
 
-@media only screen and (max-width: 500px){
+/*@media only screen and (max-width: 500px){
 
     .main{
         display:flex;
@@ -268,3 +268,4 @@ transform: rotate(180deg);
     }
 
 }
+*/

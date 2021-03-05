@@ -16,7 +16,8 @@ import HomePage from './homepage';
 import UserSection from './usersection';
 import './hero.css';
 import {Grid} from '@material-ui/core';
-import {Card} from '@material-ui/core';
+import {Card,Tooltip,IconButton} from '@material-ui/core';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
 
 const useStyles = makeStyles({
     list: {
@@ -43,8 +44,7 @@ export default function Navigation(props) {
     };
     const list = (anchor) => ( <
         div className = " anchor1" >
-        <
-        div className = {
+        <div className = {
             clsx(classes.list, {
                 [classes.fullList]: anchor === 'top' || anchor === 'bottom',
             })
@@ -53,79 +53,55 @@ export default function Navigation(props) {
         onClick = { toggleDrawer(anchor, false) }
         onKeyDown = { toggleDrawer(anchor, false) } >
 
-        <
-        List store = { props.store } > {
-            ['Network'].map((text, index) => ( <
-                Link to = '/network'
-                className = "link" >
-                <
-                ListItem button key = { text } >
-                <
-                ListItemText primary = { text }
-                /> <
-                /ListItem> <
-                /Link>
+        <List store = { props.store } > {
+            ['Network'].map((text, index) => ( 
+                <Link to = '/network'className = "link" >
+                <ListItem button key = { text } >
+                <ListItemText primary = { text }/> 
+                </ListItem> </Link>
             ))
-        } <
-        /List> <
-        Divider / >
+        } </List> 
+        <Divider / >
+        <List > {
+            ['HomePage'].map((text, index) => ( 
+                <Link to = '/'className = "link" >
+                <ListItem button key = { text } >
+                <ListItemText primary = { text }/> 
+                </ListItem> 
+                </Link>
+            ))
+        } </List> 
+        <Divider / >
         <
         List > {
-            ['HomePage'].map((text, index) => ( <
-                Link to = '/'
-                className = "link" >
-                <
-                ListItem button key = { text } >
-                <
-                ListItemText primary = { text }
-                /> <
-                /ListItem> <
-                /Link>
+            ['UserSection'].map((text, index) => ( 
+                <Link to = '/usersection' className = "link" >
+                <ListItem button key = { text } >
+                <ListItemText primary = { text }/> 
+                </ListItem> 
+                </Link>
             ))
-        } <
-        /List> <
-        Divider / >
-        <
-        List > {
-            ['UserSection'].map((text, index) => ( <
-                Link to = '/usersection'
-                className = "link" >
-                <
-                ListItem button key = { text } >
-                <
-                ListItemText primary = { text }
-                /> <
-                /ListItem> <
-                /Link>
-            ))
-        } <
-        /List> <
-        Divider / >
-
-        <
-        /div> <
-        /div>
+        } </List> 
+        <Divider / >
+        </div> 
+        </div>
     );
 
-    return ( <
-        div className = "pr4 anchor2" >
-        <
-        Card >
-        <
-        div className = "nav" > {
-            ['☰'].map((anchor) => ( <
+    return ( 
+        <div className = "pr5 anchor2" >
+        <Card >
+        <div className = "nav" > {
+            ['right'].map((anchor) => ( <
                 React.Fragment key = { anchor } >
-                <
-                Button onClick = { toggleDrawer(anchor, true) } > { anchor } < /Button> <
-                Drawer anchor = { anchor }
+                <Tooltip title='Options'><IconButton><AcUnitIcon onClick = { toggleDrawer(anchor, true) } fontSize="medium" /></IconButton></Tooltip>
+                <Drawer anchor = { anchor }
                 open = { state[anchor] }
                 onClose = { toggleDrawer(anchor, false) } > { list(anchor) } <
-                /Drawer> <
-                /React.Fragment>
+                /Drawer> 
+                </React.Fragment>
             ))
-        } <
-        /div> <
-        /Card> <
-        /div>
+        } </div> 
+        </Card> 
+        </div>
     );
 }
