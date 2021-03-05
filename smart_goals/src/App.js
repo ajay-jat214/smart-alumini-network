@@ -192,7 +192,7 @@ class App extends Component {
                     </div>
                     </div>
                     :
-                    <UserForm funCalling={this.funCalling}/>
+                    <UserForm funCalling={this.funCalling} admin="user"/>
                     }</div>
                 )
             )

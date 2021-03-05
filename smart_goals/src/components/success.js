@@ -14,9 +14,20 @@ export default function Success(props){
 		<MuiThemeProvider>
 		<React.Fragment>
 		<Box className="box">
+		<div>{
+	    props.admin==='user'
+	    ?
+	    <div>
 		<h1 style={{color:'black'}}>Thank you for your submission</h1>
 		<div className="mb3">You have Completed all the Steps successfully<span>🥳🥳</span>!! Now You may log in </div>
 		<Button variant='outlined' onClick={functionCall}>Sign In</Button>
+		</div>
+		:
+		<div>
+		<h1 style={{color:'black'}}>Thank you for your submission</h1>
+		<div className="mb3">You have Completed all the Steps successfully<span>🥳🥳</span>!! Now registered user may log in </div>
+		</div>
+		}</div>
 		</Box>
 		</React.Fragment>
 		</MuiThemeProvider>

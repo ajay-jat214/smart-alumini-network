@@ -21,10 +21,11 @@ export default class UserForm extends React.Component{
   	}
   }
 
-  	nextStep=(data)=>{
+  	nextStep=async (data)=>{
       if(data==='next')
-  		  this.setState({step:this.state.step+1});
-      if(this.state.step===4){
+  		  await this.setState({step:this.state.step+1});
+      console.log(this.state.step);
+      if(this.state.step===3&&data!=='next'){
         if(data==='success')
            this.setState({step:this.state.step+1});
         else{
@@ -53,32 +54,37 @@ render(){
                       nextStep={this.nextStep}  
                       values={values}
                       handleChange={this.handleChange} 
-                      funCalling2={this.funCalling2}   
+                      funCalling2={this.funCalling2}
+                      admin={this.props.admin}   
                		 />;
 			case 2:
 			  return <UserPersonalDetails 
 			          prevStep={this.prevStep}
                       nextStep={this.nextStep}  
                       values={values}
-                      handleChange={this.handleChange}     
+                      handleChange={this.handleChange}
+                      admin={this.props.admin}     
                		 />;
 			case 3:
 			  return <ConfirmUserDetails 
 			          prevStep={this.prevStep}
                       nextStep={this.nextStep}  
-                      values={values}     
+                      values={values}   
+                      admin={this.props.admin}  
                		 />;
 			case 4:
 			  return <Success  
                       values={values} 
-                      funCalling2={this.funCalling2}    
+                      funCalling2={this.funCalling2}
+                      admin={this.props.admin}    
                		 />;
       default:
         return <UserFormDetails 
                       nextStep={this.nextStep}  
                       values={values}
                       handleChange={this.handleChange} 
-                      funCalling2={this.funCalling2}   
+                      funCalling2={this.funCalling2} 
+                      admin={this.props.admin}  
                    />;
 
 		}

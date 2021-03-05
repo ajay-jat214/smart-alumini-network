@@ -21,7 +21,13 @@ export default class UserPersonalDetails extends React.Component{
 	return(
     <MuiThemeProvider >
       <React.Fragment>
+        <div>{
+        this.props.admin==='user'
+        ?
         <AppBar title="Enter Personal Details"/>
+        :
+        null
+        }</div>
         <Box className="box">
         <TextField
          hintText="Enter Your Username"

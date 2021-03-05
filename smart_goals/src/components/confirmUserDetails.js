@@ -10,10 +10,10 @@ import '../App.css';
 export default class UserFormDetails extends React.Component{
   continue=async(e)=>{
   	e.preventDefault();
-    console.log('yes');
+
     const {values:{firstName,lastName,email,contact,username,password,company,field,placedYear}}=this.props;
     let data={};
-    console.log(email,password,firstName,lastName,username,contact,field,company,placedYear)
+
     await fetch('https://smart-network.herokuapp.com/admin',{
       method:'post',
       headers: { Authentication: 'Content-Type:application/json' },
@@ -29,7 +29,7 @@ export default class UserFormDetails extends React.Component{
               placementYear:placedYear
               })
     })
-    .then(response=>{response.json()})
+    .then(response=>response.json())
     .then(user=>{
 
       console.log(user)
@@ -40,9 +40,9 @@ export default class UserFormDetails extends React.Component{
     console.log(data);
     if(data!==undefined)
     if(data.message!==undefined)
-  	  this.props.nextStep('success');
+  	  {this.props.nextStep('success');}
     else
-      this.props.nextStep(data);
+      {console.log('itee  kldjf');this.props.nextStep(data);}
   }
   prev=e=>{
     e.preventDefault();
@@ -53,7 +53,13 @@ export default class UserFormDetails extends React.Component{
   return(
     <MuiThemeProvider >
       <React.Fragment>
+        <div>{
+        this.props.admin==='user'
+        ?
         <AppBar title="Confirm User Details"/>
+        :
+        null
+        }</div>
         <Box className="box">
         <List>
           <ListItem
