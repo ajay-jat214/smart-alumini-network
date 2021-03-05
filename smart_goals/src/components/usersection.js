@@ -134,7 +134,7 @@ function UserSection(props){
             <label htmlFor="profileImage">{
                 profile.length
                 ?
-                <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="dummy" height='200' width='200' className='br-100 ' />
+                <img src={"https://smart-network.herokuapp.com/uploads/"+profile} alt="profile" height='200' width='200' className='br-100 ' />
                 :
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className="  h5 w5 grow  profile db w-80 h-auto "  style={{height:"100px",width:"100px"}}/>
             }</label>

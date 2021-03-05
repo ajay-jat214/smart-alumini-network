@@ -15,7 +15,7 @@ export default function Success(props){
 		<React.Fragment>
 		<Box className="box">
 		<h1 style={{color:'black'}}>Thank you for your submission</h1>
-		<div className="mb3">You have Completed all the Steps successfully🥳🥳!! Now You may log in </div>
+		<div className="mb3">You have Completed all the Steps successfully<span>🥳🥳</span>!! Now You may log in </div>
 		<Button variant='outlined' onClick={functionCall}>Sign In</Button>
 		</Box>
 		</React.Fragment>

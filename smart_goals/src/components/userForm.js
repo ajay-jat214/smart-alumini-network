@@ -24,7 +24,7 @@ export default class UserForm extends React.Component{
   	nextStep=(data)=>{
       if(data==='next')
   		  this.setState({step:this.state.step+1});
-      if(this.state.step==4){
+      if(this.state.step===4){
         if(data==='success')
            this.setState({step:this.state.step+1});
         else{
@@ -73,6 +73,13 @@ render(){
                       values={values} 
                       funCalling2={this.funCalling2}    
                		 />;
+      default:
+        return <UserFormDetails 
+                      nextStep={this.nextStep}  
+                      values={values}
+                      handleChange={this.handleChange} 
+                      funCalling2={this.funCalling2}   
+                   />;
 
 		}
 	

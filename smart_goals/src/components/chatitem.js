@@ -42,7 +42,7 @@ function ChatItem(props){
  return(
  <div>
  <div className="pt2 ">{
-   props.emailCredentials!=props.values[props.id].email
+   props.emailCredentials!==props.values[props.id].email
    ?
    <div onClick={props.click.bind(null,1)}>
   <div className="flex pl2 pb1 pt1 pointer glow:hover input-reset  bg-black white ajay " onClick={props.search.bind(null,props.values[props.id])} >

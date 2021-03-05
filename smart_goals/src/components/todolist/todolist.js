@@ -19,7 +19,7 @@ export default class ToDoList extends React.Component{
    onclick=(e)=>{
     
    	var code=e.keyCode||e.which;
-   	if(code==13){
+   	if(code===13){
    		//e.preventDefault();
    		this.setState({value:''})
    	   	this.setState({element:[...this.state.element,this.state.variable]})

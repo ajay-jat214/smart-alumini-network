@@ -118,7 +118,7 @@ class App extends Component {
                 <IconButton aria-label="Image">{
                 prof.length
                 ?
-                <img src={"https://smart-network.herokuapp.com/uploads/"+localStorage.getItem('prof')} alt="" height='50' width='50' className='br-100 ' style={{marginLeft:'auto'}}/>
+                <img src={"https://smart-network.herokuapp.com/uploads/"+localStorage.getItem('prof')} alt="profile" height='50' width='50' className='br-100 ' style={{marginLeft:'auto'}}/>
                 :
                 <AccountCircleIcon style={{height:"50px",width:"50px",marginLeft:'auto' ,color:'white'}}/>
                 }</IconButton>
