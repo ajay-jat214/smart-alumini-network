@@ -1,132 +1,125 @@
-import React from 'react';
-import Calendar_Components from './calendar/calendar_components.js';
-import {connect} from 'react-redux';
-import { INITIAL_EVENTS, createEventId } from './calendar/event-utils';
-import FullCalendar, { formatDate } from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import {calendarEvents} from './redux/actions';
+import React from "react";
+import Calendar_Components from "./calendar/calendar_components.js";
+import { connect } from "react-redux";
+import { INITIAL_EVENTS, createEventId } from "./calendar/event-utils";
+import FullCalendar, { formatDate } from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { calendarEvents } from "./redux/actions";
 
 let eventGuid = 0;
-let todayStr = new Date().toISOString().replace(/T.*$/, ''); 
+let todayStr = new Date().toISOString().replace(/T.*$/, "");
 
- 
- const mapStateToProps=(state)=>{
-  const EVENTS_LOAD=state.calendarList.EVENTS_LOAD;
- 	const email=state.emailDetails.emailCredentials;
- 	const x={email,EVENTS_LOAD};
- 	return x;
- }
+const mapStateToProps = (state) => {
+  const EVENTS_LOAD = state.calendarList.EVENTS_LOAD;
+  const email = state.emailDetails.emailCredentials;
+  const x = { email, EVENTS_LOAD };
+  return x;
+};
 
- const mapDispatchToProps=(dispatch)=>{
-  return{ 
-    search:(values)=>dispatch(calendarEvents(values))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    search: (values) => dispatch(calendarEvents(values)),
+  };
+};
+
+class Schedule extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      EVENTS_LOAD: [],
+      show: false,
+      show1: false,
+    };
   }
- }
-
-class Schedule extends React.Component{
-
- constructor(){
- 	super()
-    this.state={
-    	EVENTS_LOAD:[],
-      show:false,
-      show1:false,
-    }
- }
   componentDidMount = () => {
-    fetch('https://smart-network.herokuapp.com/fetchEvents',{
-      method:'post',
-      headers: { Authentication: 'Content-Type:application/json' },
-      body:JSON.stringify({
-              email:this.props.email,
-              })
+    fetch("https://smart-network.herokuapp.com/fetchEvents", {
+      method: "post",
+      headers: { Authentication: "Content-Type:application/json" },
+      body: JSON.stringify({
+        email: this.props.email,
+      }),
     })
-    .then(response=>response.json())
-    .then(user=>{
-    	let k=[];
- 
-      if(!user.length)
-        this.setState({show:true});
-      for(let i=0;i<user.length;i++){
-		   var option = {};
-		  const options = new Date(user[i].startDate).toLocaleTimeString([], option);
+      .then((response) => response.json())
+      .then((user) => {
+        let k = [];
 
-      	k.push({
-      		title: user[i].title,
-      		start: user[i].startDate,
-            backgroundColor:user[i].backgroundColor,
+        if (!user.length) this.setState({ show: true });
+        for (let i = 0; i < user.length; i++) {
+          var option = {};
+          const options = new Date(user[i].startDate).toLocaleTimeString(
+            [],
+            option
+          );
+
+          k.push({
+            title: user[i].title,
+            start: user[i].startDate,
+            backgroundColor: user[i].backgroundColor,
             id: user[i]._id,
             end: user[i].endDate,
-            time:options
-      	})
+            time: options,
+          });
+        }
+        if (k.length) this.setState({ show: true });
+        if (!k.length) this.setState({ show1: true });
+        else this.setState({ show1: false });
+        this.setState({ EVENTS_LOAD: k });
+        if (k.length) this.props.search(k);
+      })
+      .catch((err) => console.log(err));
+  };
 
-      }
-       if(k.length)
-        this.setState({show:true});
-       if(!k.length)
-        this.setState({show1:true});
-      else
-        this.setState({show1:false});
-      this.setState({EVENTS_LOAD:k});
-      if(k.length)
-      this.props.search(k);
+  call_back = async () => {
+    await fetch("https://smart-network.herokuapp.com/fetchEvents", {
+      method: "post",
+      headers: { Authentication: "Content-Type:application/json" },
+      body: JSON.stringify({
+        email: this.props.email,
+      }),
     })
-    .catch(err=>console.log(err))
-}
+      .then((response) => response.json())
+      .then((user) => {
+        if (!user.length) this.setState({ show: true });
+        let k = [];
+        for (let i = 0; i < user.length; i++) {
+          var option = {};
+          const options = new Date(user[i].startDate).toLocaleTimeString(
+            [],
+            option
+          );
 
-call_back=async ()=>{
-   
-    await fetch('https://smart-network.herokuapp.com/fetchEvents',{
-      method:'post',
-      headers: { Authentication: 'Content-Type:application/json' },
-      body:JSON.stringify({
-              email:this.props.email,
-              })
-    })
-    .then(response=>response.json())
-    .then(user=>{
-      if(!user.length)
-        this.setState({show:true});
-      let k=[];
-      for(let i=0;i<user.length;i++){
-       var option = {};
-      const options = new Date(user[i].startDate).toLocaleTimeString([], option);
-
-        k.push({
-          title: user[i].title,
-          start: user[i].startDate,
-            backgroundColor:user[i].backgroundColor,
+          k.push({
+            title: user[i].title,
+            start: user[i].startDate,
+            backgroundColor: user[i].backgroundColor,
             id: user[i]._id,
             end: user[i].endDate,
-            time:options
-        })
+            time: options,
+          });
+        }
+        if (k.length) this.setState({ show: true });
+        if (!k.length) this.setState({ show1: true });
+        else this.setState({ show1: false });
+        this.setState({ EVENTS_LOAD: k });
+      })
+      .catch((err) => console.log(err));
+  };
 
-      }
-       if(k.length)
-        this.setState({show:true});
-       if(!k.length)
-        this.setState({show1:true});
-      else
-        this.setState({show1:false});
-      this.setState({EVENTS_LOAD:k})
-    })
-    .catch(err=>console.log(err)) 
+  render() {
+    return (
+      <div>
+        {this.state.show && (
+          <Calendar_Components
+            show={this.state.show1}
+            EVENTS_LOAD={this.state.EVENTS_LOAD}
+            call_back={this.call_back}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
-   render(){
-
-	return(
-		<div>{
-
-        this.state.show &&
-		    ( <Calendar_Components show={this.state.show1} EVENTS_LOAD={this.state.EVENTS_LOAD} call_back={this.call_back}/>)
-      
-
-		}</div>
-		);
-   }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Schedule);
+export default connect(mapStateToProps, mapDispatchToProps)(Schedule);
