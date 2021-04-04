@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    fetch("https://smart-network.herokuapp.com/getImage", {
+    fetch("http://smart-network.herokuapp.com/getImage", {
       method: "get",
       headers: { Authentication: "Content-Type:multipart/form-data" },
     })
