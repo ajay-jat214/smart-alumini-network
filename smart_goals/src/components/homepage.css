@@ -87,6 +87,7 @@ input:focus {
   background-image: url("/assets/wall.jpg");
   background-attachment: fixed;
   background-size: cover;
+  min-height: 350px;
 }
 
 .walls {

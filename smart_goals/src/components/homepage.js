@@ -280,8 +280,7 @@ function HomePage(props) {
                     style={{ height: "50px", width: "50px" }}
                   />
                   <div className='white pl2 h-100-ns f3 measure-wide ml2 mt2'>
-                    {props.userName.charAt(0).toUpperCase() +
-                      props.userName.slice(1)}
+                    {props.userName}
                   </div>
                 </Card>
               )}
